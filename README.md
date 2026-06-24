@@ -39,12 +39,13 @@ AI 코딩 에이전트가 같은 웹 UI 요구사항을 구현할 때 결과가 
 
 ## 간단 사용 영상
 
-Ponytail 적용 전후 결과물을 나란히 비교하는 짧은 사용 영상입니다.
+GitHub README에서 바로 보이도록 MP4 링크만 두지 않고, 자동 재생되는 GIF를 먼저 배치했습니다.
 
-[baseline vs Ponytail usage video](demo-videos/baseline-vs-ponytail-usage.mp4)
+![PonyTail Skill before and after usage flow](demo-videos/ponytail-before-after-usage-flow-embed.gif)
 
 일정 입력 → 추가 → 완료/삭제 흐름을 보여주는 짧은 사용 영상입니다. 하단의 소모 토큰은 실제 실행 로그가 아니라 앱 코드 파일을 `cl100k_base` tokenizer로 계산한 추정 코드 토큰입니다.
 
+- [README 임베드용 MP4 보기](demo-videos/ponytail-before-after-usage-flow-embed.mp4)
 - [PonyTail Skill 적용 전 사용 흐름](demo-videos/baseline-usage-flow.mp4)
   - PonyTail Skill 적용 전 (소모 토큰: 약 2,109 토큰, 총 코드 라인 수: 368줄)
 - [PonyTail Skill 적용 후 사용 흐름](demo-videos/ponytail-usage-flow.mp4)
