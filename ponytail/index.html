@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ponytail Schedule Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px auto; max-width: 680px; padding: 0 16px; background: #f7f7f7; color: #222; }
+    main { background: white; border: 1px solid #ddd; border-radius: 12px; padding: 24px; }
+    h1 { margin-top: 0; }
+    form { display: grid; grid-template-columns: 1fr 150px 120px auto; gap: 8px; margin-bottom: 20px; }
+    input, button { font: inherit; padding: 9px; border-radius: 6px; }
+    input { border: 1px solid #bbb; }
+    button { border: 0; background: #2457d6; color: white; cursor: pointer; }
+    ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+    li { display: flex; align-items: center; justify-content: space-between; gap: 10px; border: 1px solid #ddd; border-radius: 8px; padding: 10px; }
+    label { display: flex; align-items: center; gap: 8px; }
+    .done span { text-decoration: line-through; color: #777; }
+    .delete { background: #d62828; }
+    .empty { color: #777; }
+    @media (max-width: 620px) { form { grid-template-columns: 1fr; } li { align-items: flex-start; } }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Ponytail Schedule Manager</h1>
+    <p>Add schedules, mark them done, and delete them. Data stays in this browser.</p>
+
+    <form id="form">
+      <input id="title" placeholder="Title" required>
+      <input id="date" type="date" required>
+      <input id="time" type="time" required>
+      <button>Add</button>
+    </form>
+
+    <ul id="list"></ul>
+  </main>
+
+  <script>
+    const key = 'ponytail-schedules';
+    const form = document.querySelector('#form');
+    const list = document.querySelector('#list');
+    const title = document.querySelector('#title');
+    const date = document.querySelector('#date');
+    const time = document.querySelector('#time');
+    let schedules = JSON.parse(localStorage.getItem(key) || '[]');
+
+    function save() {
+      localStorage.setItem(key, JSON.stringify(schedules));
+    }
+
+    function render() {
+      list.innerHTML = '';
+      if (!schedules.length) {
+        list.innerHTML = '<li class="empty">No schedules yet.</li>';
+        return;
+      }
+      schedules.forEach((item) => {
+        const li = document.createElement('li');
+        li.className = item.done ? 'done' : '';
+        li.innerHTML = `
+          <label>
+            <input type="checkbox" ${item.done ? 'checked' : ''}>
+            <span>${escapeHtml(item.title)} - ${item.date} ${item.time}</span>
+          </label>
+          <button class="delete">Delete</button>
+        `;
+        li.querySelector('input').onchange = () => {
+          item.done = !item.done;
+          save();
+          render();
+        };
+        li.querySelector('.delete').onclick = () => {
+          schedules = schedules.filter((schedule) => schedule.id !== item.id);
+          save();
+          render();
+        };
+        list.appendChild(li);
+      });
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    form.onsubmit = (event) => {
+      event.preventDefault();
+      schedules.push({ id: Date.now(), title: title.value.trim(), date: date.value, time: time.value, done: false });
+      save();
+      form.reset();
+      title.focus();
+      render();
+    };
+
+    render();
+  </script>
+</body>
+</html>

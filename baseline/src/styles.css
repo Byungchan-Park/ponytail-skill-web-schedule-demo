@@ -1,0 +1,131 @@
+:root {
+  color-scheme: light;
+  font-family: Arial, sans-serif;
+  background: #f5f7fb;
+  color: #1f2937;
+}
+
+body {
+  margin: 0;
+}
+
+.app-shell {
+  width: min(720px, calc(100% - 32px));
+  margin: 40px auto;
+  padding: 28px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: #2563eb;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 12px;
+}
+
+h1, h2 {
+  margin: 0;
+}
+
+.description {
+  color: #6b7280;
+}
+
+.schedule-form {
+  display: grid;
+  grid-template-columns: 1fr 150px 120px auto;
+  gap: 12px;
+  align-items: end;
+  margin: 24px 0;
+}
+
+label {
+  display: grid;
+  gap: 6px;
+  font-weight: 700;
+}
+
+input, button {
+  font: inherit;
+  border-radius: 8px;
+}
+
+input {
+  border: 1px solid #cbd5e1;
+  padding: 10px;
+}
+
+button {
+  border: 0;
+  padding: 11px 14px;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+}
+
+.delete-button {
+  background: #ef4444;
+}
+
+.list-header, .schedule-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.list-header span {
+  color: #6b7280;
+}
+
+.schedule-list {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.schedule-item {
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+}
+
+.schedule-main {
+  display: flex;
+  grid-template-columns: none;
+  align-items: center;
+  gap: 10px;
+  font-weight: 400;
+}
+
+.schedule-text {
+  display: grid;
+  gap: 2px;
+}
+
+.schedule-text span {
+  color: #6b7280;
+}
+
+.is-done strong {
+  text-decoration: line-through;
+  color: #6b7280;
+}
+
+.empty-state {
+  color: #6b7280;
+  padding: 16px 0;
+}
+
+@media (max-width: 680px) {
+  .schedule-form {
+    grid-template-columns: 1fr;
+  }
+}
