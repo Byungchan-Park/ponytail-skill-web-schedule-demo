@@ -1,71 +1,76 @@
 # Ponytail Skill Web Schedule Demo
 
-This repository is a small comparison demo for AI coding agents.
+AI 코딩 에이전트가 같은 웹 UI 요구사항을 구현할 때 결과가 어떻게 달라지는지 비교하는 데모 레포지토리입니다.
 
-It shows how the same web UI requirement can lead to two different implementation styles:
+이 레포는 두 가지 구현을 나란히 보여줍니다.
 
-1. `baseline/`: a normal agent-style implementation with separated files and a little structure.
-2. `ponytail/`: a Ponytail-style minimum implementation that only builds what is needed now.
+1. `baseline/`: 일반적인 개발 지시를 받은 AI 에이전트가 만들 법한 구조화된 구현
+2. `ponytail/`: Ponytail 방식으로 지금 필요한 기능만 최소 구현한 버전
 
-The goal is not to build the best schedule management product. The goal is to make overengineering visible.
+목표는 최고의 스케줄 관리 서비스를 만드는 것이 아닙니다. 간단한 웹 UI도 AI 에이전트에게 맡기면 파일 수, 코드량, 의존성, 구조가 불필요하게 커질 수 있다는 점을 보여주는 것입니다.
 
-## Why a schedule app?
+## 왜 스케줄 관리 앱인가?
 
-A schedule app is familiar and small, but it still needs real UI behavior:
+스케줄 관리 앱은 누구나 이해하기 쉬운 주제이지만, 웹 UI에서 필요한 기본 동작을 모두 포함합니다.
 
-- add a schedule
-- list schedules
-- mark schedules done
-- delete schedules
-- persist data in `localStorage`
+- 일정 추가
+- 일정 목록 조회
+- 완료 처리
+- 삭제
+- `localStorage`를 이용한 브라우저 저장
 
-That makes it a good demo for comparing file count, code size, dependencies, and complexity.
+그래서 파일 수, 코드량, 의존성, 실행 방식, 추상화 정도를 비교하기 좋은 작은 데모입니다.
 
-## Run the baseline version
+## baseline 버전 실행 방법
 
 ```bash
 cd baseline
 python3 -m http.server 8000
 ```
 
-Open:
+브라우저에서 다음 주소를 엽니다.
 
 ```text
 http://localhost:8000
 ```
 
-The baseline version uses browser-native JavaScript modules and no install step.
+baseline 버전은 브라우저 기본 JavaScript 모듈을 사용하며, 설치 과정은 필요 없습니다. 다만 컴포넌트, 서비스, 유틸 파일을 분리해 일반적인 AI 에이전트식 구조화가 드러나도록 했습니다.
 
-## Run the Ponytail version
+## ponytail 버전 실행 방법
 
 ```bash
 cd ponytail
 python3 -m http.server 8001
 ```
 
-Open:
+브라우저에서 다음 주소를 엽니다.
 
 ```text
 http://localhost:8001
 ```
 
-You can also open `ponytail/index.html` directly in a browser.
+또는 `ponytail/index.html` 파일을 브라우저에서 직접 열어도 됩니다.
 
-## Comparison criteria
+Ponytail 버전은 단일 HTML 파일로 동작하며 외부 의존성, 빌드 도구, 프레임워크를 사용하지 않습니다.
 
-- file count
-- lines of code
-- external dependencies
-- build step requirement
-- setup simplicity
-- UI complexity
-- state management complexity
-- unnecessary abstractions
-- features outside requirements
-- feature completeness
-- time to understand
-- ease of modification
+## 비교 기준
 
-## Key insight
+- 파일 수
+- 코드 라인 수
+- 외부 의존성 수
+- 빌드 필요 여부
+- 실행 방법의 단순성
+- UI 복잡도
+- 상태 관리 복잡도
+- 불필요한 컴포넌트 분리
+- 불필요한 추상화
+- 요구사항 외 기능 포함 여부
+- 기능 요구사항 충족 여부
+- 사람이 빠르게 이해할 수 있는지
+- 수정 난이도
 
-Even a simple web UI can become larger than necessary when an AI agent speculates about future needs. Ponytail keeps the implementation close to the current requirement: fewer files, fewer concepts, fewer dependencies, and faster review.
+## 이 레포에서 얻을 수 있는 인사이트
+
+간단한 웹 UI도 AI 에이전트가 미래 확장성을 과하게 예상하면 필요 이상의 파일과 구조가 생길 수 있습니다.
+
+Ponytail 방식은 지금 필요한 화면과 기능만 구현하게 만들어 검토할 코드량을 줄이고, 실행 방법을 단순하게 만들며, 사람이 더 빠르게 이해하고 수정할 수 있는 결과를 만듭니다.
