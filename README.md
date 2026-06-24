@@ -37,6 +37,19 @@ AI 코딩 에이전트가 같은 웹 UI 요구사항을 구현할 때 결과가 
 |---|---|
 | ![Baseline schedule list](demo-screenshots/baseline-schedule-list.png) | ![Ponytail schedule list](demo-screenshots/ponytail-schedule-list.png) |
 
+## 간단 사용 영상
+
+Ponytail 적용 전후 결과물을 나란히 비교하는 짧은 사용 영상입니다.
+
+[baseline vs Ponytail usage video](demo-videos/baseline-vs-ponytail-usage.mp4)
+
+일정 입력 → 추가 → 완료/삭제 흐름을 보여주는 짧은 사용 영상입니다. 하단의 소모 토큰은 실제 실행 로그가 아니라 앱 코드 파일을 `cl100k_base` tokenizer로 계산한 추정 코드 토큰입니다.
+
+- [PonyTail Skill 적용 전 사용 흐름](demo-videos/baseline-usage-flow.mp4)
+  - PonyTail Skill 적용 전 (소모 토큰: 약 2,109 토큰, 총 코드 라인 수: 368줄)
+- [PonyTail Skill 적용 후 사용 흐름](demo-videos/ponytail-usage-flow.mp4)
+  - PonyTail Skill 적용 후 (소모 토큰: 약 919 토큰, 총 코드 라인 수: 100줄)
+
 두 화면은 같은 기능을 제공합니다. 차이는 사용자 기능보다 구현 방식에 있습니다.
 
 - baseline은 여러 파일로 나뉜 일반적인 AI 에이전트식 구조입니다.
