@@ -11,6 +11,37 @@ AI 코딩 에이전트가 같은 웹 UI 요구사항을 구현할 때 결과가 
 
 목표는 최고의 스케줄 관리 서비스를 만드는 것이 아닙니다. 간단한 웹 UI도 AI 에이전트에게 맡기면 파일 수, 코드량, 의존성, 구조가 불필요하게 커질 수 있다는 점을 보여주는 것입니다.
 
+## 한눈에 보는 결과
+
+| 구분 | Ponytail 미적용 baseline | Ponytail 적용 |
+|---|---:|---:|
+| 앱 파일 수 | 10개 | 1개 |
+| 앱 코드 라인 수 | 368 lines | 100 lines |
+| 외부 의존성 | 0개 | 0개 |
+| 빌드 단계 | 없음 | 없음 |
+| 구현 구조 | 컴포넌트/서비스/유틸 분리 | 단일 `index.html` |
+| 브라우저 테스트 | Pass | Pass |
+
+테스트한 기능:
+
+- 일정 추가: Pass
+- 일정 목록 조회: Pass
+- 완료 처리: Pass
+- 삭제: Pass
+- 새로고침 후 `localStorage` 유지: Pass
+- 브라우저 콘솔 JavaScript 오류: 0
+
+## UI 캡처 비교
+
+| Ponytail 미적용 baseline | Ponytail 적용 |
+|---|---|
+| ![Baseline schedule list](demo-screenshots/baseline-schedule-list.png) | ![Ponytail schedule list](demo-screenshots/ponytail-schedule-list.png) |
+
+두 화면은 같은 기능을 제공합니다. 차이는 사용자 기능보다 구현 방식에 있습니다.
+
+- baseline은 여러 파일로 나뉜 일반적인 AI 에이전트식 구조입니다.
+- ponytail은 같은 기능을 단일 HTML 파일로 끝낸 최소 구현입니다.
+
 ## 왜 스케줄 관리 앱인가?
 
 스케줄 관리 앱은 누구나 이해하기 쉬운 주제이지만, 웹 UI에서 필요한 기본 동작을 모두 포함합니다.
